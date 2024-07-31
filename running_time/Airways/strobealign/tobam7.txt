@@ -1,0 +1,23 @@
+	Command being timed: "samtools view -h -b -S /work/shaojun/abundance_estimation/test_dataset/strobealign/7.sam -o /work/shaojun/abundance_estimation/test_dataset/strobealign/7.bam -@ 4"
+	User time (seconds): 1007.61
+	System time (seconds): 26.36
+	Percent of CPU this job got: 448%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 3:50.32
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 70556
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 18
+	Minor (reclaiming a frame) page faults: 4996213
+	Voluntary context switches: 224030
+	Involuntary context switches: 24143
+	Swaps: 0
+	File system inputs: 23959416
+	File system outputs: 10350832
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

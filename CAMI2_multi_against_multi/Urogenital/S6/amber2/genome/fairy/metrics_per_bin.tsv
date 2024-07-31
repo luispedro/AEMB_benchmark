@@ -1,0 +1,25 @@
+sample_id	Bin ID	Most abundant genome	Purity (bp)	Completeness (bp)	Bin size (bp)	True positives (bp)	True size of most abundant genome (bp)	Purity (seq)	Completeness (seq)	Bin size (seq)	True positives (seq)	True size of most abundant genome (seq)
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_20.fa	OTU_97.4481.0	1.0	1.0	1274071	1274071	1274071	1.0	1.0	1	1	1
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_19.fa	OTU_97.10524.0	0.9720152010192536	1.0	2551671	2480263	2480263	0.6666666666666666	1.0	3	2	2
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_6.fa	OTU_97.92.0	0.9173223786528341	1.0	4481007	4110528	4110528	0.14285714285714285	1.0	7	1	1
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_4.fa	OTU_97.369.0	0.8252391805848731	1.0	3468718	2862522	2862522	0.5	1.0	2	1	1
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_25.fa	OTU_97.6593.0	1.0	1.0	3165025	3165025	3165025	1.0	1.0	1	1	1
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_24.fa	OTU_97.1676.0	1.0	1.0	2446243	2446243	2446243	1.0	1.0	1	1	1
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_22.fa	OTU_97.2363.0	1.0	1.0	3123603	3123603	3123603	1.0	1.0	2	2	2
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_21.fa	OTU_97.27530.0	1.0	1.0	2313739	2313739	2313739	1.0	1.0	1	1	1
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_2.fa	OTU_97.6777.0	1.0	1.0	1617247	1617247	1617247	1.0	1.0	6	6	6
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_9.fa	OTU_97.26891.0	1.0	1.0	751521	751521	751521	1.0	1.0	5	5	5
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_18.fa	OTU_97.5487.0	1.0	1.0	1543579	1543579	1543579	1.0	1.0	6	6	6
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_16.fa	OTU_97.27551.0	1.0	1.0	1746701	1746701	1746701	1.0	1.0	1	1	1
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_15.fa	OTU_97.90.0	0.8645820099839098	1.0	1928503	1667349	1667349	0.5	1.0	2	1	1
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_14.fa	OTU_97.2798.0	1.0	1.0	1667019	1667019	1667019	1.0	1.0	8	8	8
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_13.fa	OTU_97.21316.0	1.0	1.0	1360291	1360291	1360291	1.0	1.0	4	4	4
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_11.fa	OTU_97.2583.0	1.0	1.0	1145799	1145799	1145799	1.0	1.0	6	6	6
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_10.fa	OTU_97.300.0	1.0	1.0	751637	751637	751637	1.0	1.0	6	6	6
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_7.fa	OTU_97.18936.0	0.8423590475275651	0.8496933923988244	4195439	3534066	4159225	0.8333333333333334	0.625	12	10	16
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_17.fa	OTU_97.32703.0	1.0	0.789763159678235	1363410	1363410	1726353	1.0	0.42857142857142855	3	3	7
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_1.fa	OTU_97.7557.0	0.5000122656899404	0.7852833417920345	4239468	2119786	2699390	0.5	0.5	2	1	2
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_5.fa	OTU_97.10391.0	0.7774435294675661	0.7785197848317569	2740810	2130825	2737021	0.75	0.9	12	9	10
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_8.fa	OTU_97.13437.0	0.8498615111199523	0.7695457772777342	3880817	3298157	4285849	0.6666666666666666	0.625	15	10	16
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_3.fa	OTU_97.1676.1	1.0	0.2695133335710373	332587	332587	1234028	1.0	0.10584588131089459	239	239	2258
+gsa	/public/home/pansj/abundance_estimation/CAMI2/Urogenital/multi_to_multi/fairy/6/output2/output_recluster_bins/SemiBin_0.fa	OTU_97.40012.0	0.9815667029071442	0.22535104719379692	628211	616631	2736313	0.1	0.5	10	1	2

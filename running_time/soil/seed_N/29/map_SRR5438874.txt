@@ -1,0 +1,23 @@
+	Command being timed: "/work/shaojun/abundance_estimation/strobealign_test/build/./strobealign /work/shaojun/abundance_estimation/test_dataset/soil/SAMN06266448-assembled.fa /work/shaojun/abundance_estimation/test_dataset/soil/SRR5438874_1.fastq.gz /work/shaojun/abundance_estimation/test_dataset/soil/SRR5438874_2.fastq.gz -t 4 -R 6 -b 29 -x"
+	User time (seconds): 1938.33
+	System time (seconds): 14.83
+	Percent of CPU this job got: 354%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 9:10.67
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 8035056
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 2073332
+	Voluntary context switches: 2046
+	Involuntary context switches: 14301
+	Swaps: 0
+	File system inputs: 29106880
+	File system outputs: 117912
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

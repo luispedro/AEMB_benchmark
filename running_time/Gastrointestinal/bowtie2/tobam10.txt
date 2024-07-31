@@ -1,0 +1,23 @@
+	Command being timed: "samtools view -h -b -S /work/shaojun/abundance_estimation/test_dataset/Gastrointestinal/bowtie2/10.sam -o /work/shaojun/abundance_estimation/test_dataset/Gastrointestinal/bowtie2/10.bam -@ 4"
+	User time (seconds): 883.58
+	System time (seconds): 27.24
+	Percent of CPU this job got: 442%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 3:25.88
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 14720
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 18
+	Minor (reclaiming a frame) page faults: 5418980
+	Voluntary context switches: 251179
+	Involuntary context switches: 22537
+	Swaps: 0
+	File system inputs: 26014440
+	File system outputs: 10696664
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

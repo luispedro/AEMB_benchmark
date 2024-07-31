@@ -1,0 +1,23 @@
+	Command being timed: "bwa mem -p -t 4 /work/shaojun/abundance_estimation/test_dataset/anonymous_gsa.fasta /work/shaojun/abundance_estimation/test_dataset/S3/anonymous_reads.fq.gz"
+	User time (seconds): 18733.24
+	System time (seconds): 42.89
+	Percent of CPU this job got: 402%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:17:49
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1553084
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 3
+	Minor (reclaiming a frame) page faults: 1147334
+	Voluntary context switches: 3077151
+	Involuntary context switches: 50625
+	Swaps: 0
+	File system inputs: 10973664
+	File system outputs: 27171992
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

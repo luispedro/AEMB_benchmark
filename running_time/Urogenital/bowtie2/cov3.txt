@@ -1,0 +1,23 @@
+	Command being timed: "python generate_coverage.py /work/shaojun/abundance_estimation/test_dataset/Urogenital/bowtie2/3.sorted.bam /work/shaojun/abundance_estimation/test_dataset/Urogenital/bowtie2/3.csv"
+	User time (seconds): 113.97
+	System time (seconds): 3.67
+	Percent of CPU this job got: 110%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:46.42
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 184004
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 398
+	Minor (reclaiming a frame) page faults: 262943
+	Voluntary context switches: 15259
+	Involuntary context switches: 952
+	Swaps: 0
+	File system inputs: 129552
+	File system outputs: 2560
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

@@ -1,0 +1,23 @@
+	Command being timed: "bowtie2-build -f /work/shaojun/abundance_estimation/test_dataset/Oral/anonymous_gsa.fasta /work/shaojun/abundance_estimation/test_dataset/Oral/bowtie2/anonymous_gsa.fasta --threads 4"
+	User time (seconds): 772.43
+	System time (seconds): 3.34
+	Percent of CPU this job got: 312%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:07.89
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 577648
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 36
+	Minor (reclaiming a frame) page faults: 463459
+	Voluntary context switches: 130997
+	Involuntary context switches: 2903
+	Swaps: 0
+	File system inputs: 388064
+	File system outputs: 3489048
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

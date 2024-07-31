@@ -1,0 +1,23 @@
+	Command being timed: "/work/shaojun/abundance_estimation/strobealign_7fe2934/strobealign/build/./strobealign --use-index /work/shaojun/abundance_estimation/test_dataset/Urogenital/anonymous_gsa.fasta /work/shaojun/abundance_estimation/test_dataset/Urogenital/S7/anonymous_reads.fq.gz --interleaved -t 4 -R 6"
+	User time (seconds): 1464.81
+	System time (seconds): 28.31
+	Percent of CPU this job got: 377%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 6:35.32
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 844428
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 8329684
+	Voluntary context switches: 1872
+	Involuntary context switches: 8574
+	Swaps: 0
+	File system inputs: 11209608
+	File system outputs: 23160920
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

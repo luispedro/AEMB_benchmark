@@ -1,0 +1,23 @@
+	Command being timed: "samtools sort /work/shaojun/abundance_estimation/test_dataset/Oral/bwa/8.bam -o /work/shaojun/abundance_estimation/test_dataset/Oral/bwa/8.sorted.bam -@ 4"
+	User time (seconds): 1063.61
+	System time (seconds): 20.75
+	Percent of CPU this job got: 385%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:41.56
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3427488
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 22
+	Minor (reclaiming a frame) page faults: 953963
+	Voluntary context switches: 593699
+	Involuntary context switches: 21399
+	Swaps: 0
+	File system inputs: 16141160
+	File system outputs: 18849360
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

@@ -1,0 +1,23 @@
+	Command being timed: "samtools sort /work/shaojun/abundance_estimation/test_dataset/Skin/strobealign/5.bam -o /work/shaojun/abundance_estimation/test_dataset/Skin/strobealign/5.sorted.bam -@ 4"
+	User time (seconds): 990.47
+	System time (seconds): 17.78
+	Percent of CPU this job got: 400%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:11.51
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3479224
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 17
+	Minor (reclaiming a frame) page faults: 961783
+	Voluntary context switches: 520169
+	Involuntary context switches: 21018
+	Swaps: 0
+	File system inputs: 3589080
+	File system outputs: 17165736
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

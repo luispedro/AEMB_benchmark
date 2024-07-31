@@ -1,0 +1,23 @@
+	Command being timed: "bowtie2 -q --fr -x /work/shaojun/abundance_estimation/test_dataset/Gastrointestinal/bowtie2/anonymous_gsa.fasta --interleaved /work/shaojun/abundance_estimation/test_dataset/Gastrointestinal/S3/anonymous_reads.fq.gz -S /work/shaojun/abundance_estimation/test_dataset/Gastrointestinal/bowtie2/3.sam -p 4"
+	User time (seconds): 25740.45
+	System time (seconds): 18.46
+	Percent of CPU this job got: 500%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:25:49
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 374504
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 24
+	Minor (reclaiming a frame) page faults: 99808
+	Voluntary context switches: 528323
+	Involuntary context switches: 24506
+	Swaps: 0
+	File system inputs: 10671880
+	File system outputs: 26718480
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
