@@ -1,18 +1,28 @@
+from collections import namedtuple
+
+ResourceUsage = namedtuple('ResourceUsage', ['running_time', 'memory_usage'])
+
+
 def parse_time_output(log_file):
+    ''' Parse the output of a time command
+    Args:
+        log_file (str): The path to the log file to parse.
+    Returns:
+        ResourceUsage: A named tuple containing the running time and memory usage.
+    '''
     with open(log_file) as fh:
         running_time = 0
         memory = 0
         for line in fh:
             if line.strip().startswith("Command exited with non-zero"):
-                print('error')
-                continue
+                raise ValueError(f'Error in the process {log_file}, exit status is not 0')
 
             name, value = line.strip().split(": ")
             value = value.strip('"')
 
             if name == "Exit status":
                 if int(value) != 0:
-                    print('error')
+                    raise ValueError(f'Error in the process {log_file}, exit status is not 0')
 
             if name == "Elapsed (wall clock) time (h:mm:ss or m:ss)":
                 if '.' in value:
@@ -26,12 +36,11 @@ def parse_time_output(log_file):
                 elif len(value) == 3:
                     seconds = int(value[0]) * 3600 + int(value[1]) * 60 + int(value[2])
                 else:
-                    raise Exception("Unknown time format {}".format(value))
+                    raise ValueError(f"Unknown time format {value} in {log_file}")
                 value = seconds
                 running_time = value
 
             if name == 'Maximum resident set size (kbytes)':
                 memory = int(value)/1024
-    return running_time, memory
-
+    return ResourceUsage(running_time, memory)
 
