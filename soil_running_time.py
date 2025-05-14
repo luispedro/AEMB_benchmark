@@ -1,6 +1,10 @@
 import matplotlib.pyplot as plt
 from matplotlib import cm
 from parse_output import parse_time_output
+from os import makedirs
+
+
+makedirs('plots', exist_ok=True)
 
 srr_list = ['SRR3989440', 'SRR3989449', 'SRR3989454', 'SRR3989475', 'SRR5436853',
             'SRR5438034', 'SRR5438046', 'SRR5438132', 'SRR5438874', 'SRR5438876']
@@ -38,11 +42,11 @@ ax.legend(bars, method_names)
 ax.set_xlabel('Methods')
 ax.set_ylabel('Running time (mins)')
 
-fig.savefig(f'soil_time.pdf', dpi=300, bbox_inches='tight')
+fig.savefig(f'plots/soil_time.pdf', dpi=300, bbox_inches='tight')
 fig,ax = plt.subplots()
 bars = ax.bar(method_names, memory, color=cm.Dark2.colors)
 
 ax.legend(bars, method_names)
 ax.set_xlabel('Methods')
 ax.set_ylabel('Peak memory usage (MB)')
-fig.savefig(f'soil_memory.pdf', dpi=300, bbox_inches='tight')
+fig.savefig(f'plots/soil_memory.pdf', dpi=300, bbox_inches='tight')
