@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from collections import defaultdict
 import os
 import pandas as pd
 
@@ -15,55 +16,46 @@ env2indices = {
 
 
 def get_result(env, data_index, amber_path,run_time):
-    genome_path = os.path.join(f'{amber_path}/S{data_index[0]}/amber0', 'genome')
-    method_list = {}
-    species_list = {}
-    genus_list = {}
-
-
-    for root, dirs, files in os.walk(genome_path, topdown=False):
-        for name in dirs:
-            method_list[name] = []
-            species_list[name] = []
-            genus_list[name] = []
+    method2strain = defaultdict(set)
+    method2species = defaultdict(set)
+    method2genus = defaultdict(set)
 
     for ix in data_index:
         taxi = pd.read_csv(f'CAMI2_multi_against_multi/{env}/taxonomic_profile_{ix}.txt', sep='\t', skiprows=3, dtype={'@@TAXID': str, 'TAXPATH': str})
         taxi_genus = taxi[taxi['RANK'] == 'genus']['@@TAXID'].values.tolist()
         taxi_species = taxi[taxi['RANK'] == 'species'][
             '@@TAXID'].values.tolist()
-        genome_path = os.path.join(f'{amber_path}/S{ix}/amber{run_time}','genome')
 
-        method_path_list = []
+        genome_path = os.path.join(f'{amber_path}/S{ix}/amber{run_time}','genome')
         for root, dirs, files in os.walk(genome_path, topdown=False):
             for name in dirs:
-                method_path_list.append(os.path.join(root, name))
+                method_path = os.path.join(root, name)
+                metric = pd.read_csv(os.path.join(method_path, 'metrics_per_bin.tsv'), sep='\t')
+                com_90_pur_95 = metric[
+                    (metric['Completeness (bp)'].astype(float) > float(0.9)) & (
+                            metric['Purity (bp)'].astype(float) >= float(0.95))]
+                strains = com_90_pur_95['Most abundant genome'].values.tolist()
+                method2strain[name].update(strains)
 
-
-        for method_path in method_path_list:
-            metric = pd.read_csv(os.path.join(method_path, 'metrics_per_bin.tsv'), sep='\t')
-            com_90_pur_95 = metric[
-                (metric['Completeness (bp)'].astype(float) > float(0.9)) & (
-                        metric['Purity (bp)'].astype(float) >= float(0.95))]
-            strain_list = com_90_pur_95['Most abundant genome'].values.tolist()
-            method_list[method_path.split('/')[-1]].extend(strain_list)
-
-            for strain in strain_list:
-                if strain in taxi['_CAMI_GENOMEID'].values.tolist():
-                    taxi_split = taxi[taxi['_CAMI_GENOMEID'] == strain]['TAXPATH'].values[0].split('|')
-                    if taxi_split[-2] in taxi_species:
-                        species_list[method_path.split('/')[-1]].append(taxi_split[-2])
-                    if taxi_split[-3] in taxi_genus:
-                        genus_list[method_path.split('/')[-1]].append(taxi_split[-3])
+                for strain in strains:
+                    if strain in taxi['_CAMI_GENOMEID'].values.tolist():
+                        taxi_split = taxi[taxi['_CAMI_GENOMEID'] == strain]['TAXPATH'].values[0].split('|')
+                        if taxi_split[-2] in taxi_species:
+                            method2species[name].add(taxi_split[-2])
+                        if taxi_split[-3] in taxi_genus:
+                            method2genus[name].add(taxi_split[-3])
     result = {}
     for method in ['bowtie2', 'seed', 'seed_hash', 'bwa', 'strobealign','fairy']:
-        result[method] = [len(list(set(method_list[method]))),len(list(set(species_list[method]))), len(list(set(genus_list[method])))]
+        result[method] = (len(method2strain[method]),
+                            len(method2species[method]),
+                            len(method2genus[method]),
+                          )
+
     return result
 
 def plot_multi_against_multi_hash():
     for env,data_index in env2indices.items():
-
-        result = {'seed':[0,0,0], 'seed_hash':[0,0,0]}
+        result = {}
 
         for run_time in range(5):
             result_run = get_result(env, data_index, f"CAMI2_multi_against_multi/{env}", run_time)
