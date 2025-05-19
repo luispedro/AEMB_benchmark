@@ -7,7 +7,7 @@ plt.rcParams['ps.fonttype'] = 42
 
 def get_high(result_file):
     data = pd.read_csv(result_file, index_col=0)
-    num_high = data[(data['Completeness'].astype(float) > float(90)) & (data['Contamination'].astype(float) < float(0.05 * 100)) & (data['pass.GUNC'] == True)].shape[0]
+    num_high = data[(data['Completeness'].astype(float) > float(90)) & (data['Contamination'].astype(float) < float(0.05 * 100)) & data['pass.GUNC']].shape[0]
     return num_high
 
 def plot_human():
@@ -19,18 +19,15 @@ def plot_human():
     result_bowtie2 = 0
     for sample in testing_list:
         result_bowtie2 += get_high(f"real_datasets/human_gut/{sample}/bowtie2/result.csv")
-    print(result_bowtie2)
     result_bowtie2_single = 0
     for sample in testing_list:
         result_bowtie2_single += get_high(f"real_datasets/human_gut/{sample}/bowtie2_single/result.csv")
-    print(result_bowtie2_single)
     result_aemb = []
     for num in training_num:
         num_high = 0
         for sample in testing_list:
             num_high += get_high(f"real_datasets/human_gut/{sample}/{num}/result.csv")
         result_aemb.append(num_high)
-    print(result_aemb)
     x_values = [20,30,40,50,60,70,80,90]
 
     fig, ax = plt.subplots(figsize=(10, 6))
@@ -46,15 +43,14 @@ def plot_human():
     ax.set_ylim(200, max(result_aemb + [result_bowtie2]))
     ax.legend()
 
-    plt.savefig('Human_gut.pdf', dpi=300, bbox_inches='tight')
-    plt.close()
+    fig.savefig('plots/Human_gut.pdf', dpi=300, bbox_inches='tight')
 
 def plot_dog():
     testing_list = ['SAMN06172442','SAMN06172428', 'SAMN06172478', 'SAMN06172411', 'SAMN06172505','SAMN06172409', 'SAMN06172516', 'SAMN06172506','SAMN06172498',
                     'SAMN06172474', 'SAMN06172514', 'SAMN06172469', 'SAMN06172448', 'SAMN06172470', 'SAMN06172420', 'SAMN06172421', 'SAMN06172408',
                      'SAMN06172495', 'SAMN06172493', 'SAMN06172504']
     training_num = [20,30,40,50,60,70,80,90,100,110,120,129]
-    result_bowtie2  = 0
+    result_bowtie2 = 0
     for sample in testing_list:
         result_bowtie2 += get_high(f"real_datasets/dog/{sample}/bowtie2/result.csv")
     print(result_bowtie2)
@@ -85,7 +81,7 @@ def plot_dog():
     ax.set_ylim(400, max(result_aemb + [result_bowtie2]))
     ax.legend()
 
-    plt.savefig('Dog.pdf', dpi=300, bbox_inches='tight')
+    fig.savefig('plots/Dog.pdf', dpi=300, bbox_inches='tight')
     plt.close()
 
 def plot_tara():
@@ -123,8 +119,7 @@ def plot_tara():
     ax.set_title('Ocean')
     ax.set_xticks(x_values)
     ax.legend()
-    plt.savefig('Ocean.pdf', dpi=300, bbox_inches='tight')
-    plt.close()
+    fig.savefig('plots/Ocean.pdf', dpi=300, bbox_inches='tight')
 
 def plot_soil():
     testing_list = ['SAMN06266461', 'SAMN06264631', 'SAMN06267101', 'SAMN06266485', 'SAMN06267081',
@@ -160,8 +155,7 @@ def plot_soil():
     ax.set_title('Soil')
     ax.set_xticks(x_values)
     ax.legend()
-    plt.savefig('Soil.pdf', dpi=300, bbox_inches='tight')
-    plt.close()
+    fig.savefig('plots/Soil.pdf', dpi=300, bbox_inches='tight')
 
 
 if __name__ == '__main__':
