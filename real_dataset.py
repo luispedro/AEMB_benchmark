@@ -1,14 +1,18 @@
 import matplotlib.pyplot as plt
 import pandas as pd
-import numpy as np
 
 plt.rcParams['pdf.fonttype'] = 42
 plt.rcParams['ps.fonttype'] = 42
 
-def get_high(result_file):
-    data = pd.read_csv(result_file, index_col=0)
-    num_high = data[(data['Completeness'].astype(float) > float(90)) & (data['Contamination'].astype(float) < float(0.05 * 100)) & data['pass.GUNC']].shape[0]
-    return num_high
+
+def nr_hq_mags(result_file):
+    # `boolean` type supports NA (unlike `bool`)
+    data = pd.read_csv(result_file,
+                        index_col=0,
+                        dtype={'Completeness': 'float64', 'Contamination': 'float64', 'pass.GUNC': 'boolean'})
+
+    return data.eval('Completeness > 90.0 and Contamination < 5 & `pass.GUNC`', engine='python').sum()
+
 
 def plot_human():
     testing_list = ['CCMD98702133ST', 'CCMD45004878ST', 'CCMD38158721ST', 'CCMD53522274ST', 'CCMD72690923ST',
@@ -18,15 +22,15 @@ def plot_human():
     training_num = [20,30,40,50,60,70,80,82]
     result_bowtie2 = 0
     for sample in testing_list:
-        result_bowtie2 += get_high(f"real_datasets/human_gut/{sample}/bowtie2/result.csv")
+        result_bowtie2 += nr_hq_mags(f"real_datasets/human_gut/{sample}/bowtie2/result.csv")
     result_bowtie2_single = 0
     for sample in testing_list:
-        result_bowtie2_single += get_high(f"real_datasets/human_gut/{sample}/bowtie2_single/result.csv")
+        result_bowtie2_single += nr_hq_mags(f"real_datasets/human_gut/{sample}/bowtie2_single/result.csv")
     result_aemb = []
     for num in training_num:
         num_high = 0
         for sample in testing_list:
-            num_high += get_high(f"real_datasets/human_gut/{sample}/{num}/result.csv")
+            num_high += nr_hq_mags(f"real_datasets/human_gut/{sample}/{num}/result.csv")
         result_aemb.append(num_high)
     x_values = [20,30,40,50,60,70,80,90]
 
@@ -52,17 +56,17 @@ def plot_dog():
     training_num = [20,30,40,50,60,70,80,90,100,110,120,129]
     result_bowtie2 = 0
     for sample in testing_list:
-        result_bowtie2 += get_high(f"real_datasets/dog/{sample}/bowtie2/result.csv")
+        result_bowtie2 += nr_hq_mags(f"real_datasets/dog/{sample}/bowtie2/result.csv")
     print(result_bowtie2)
     result_bowtie2_single = 0
     for sample in testing_list:
-        result_bowtie2_single += get_high(f"real_datasets/dog/{sample}/bowtie2_single/result.csv")
+        result_bowtie2_single += nr_hq_mags(f"real_datasets/dog/{sample}/bowtie2_single/result.csv")
     print(result_bowtie2_single)
     result_aemb = []
     for num in training_num:
         num_high = 0
         for sample in testing_list:
-            num_high += get_high(f"real_datasets/dog/{sample}/{num}/result.csv")
+            num_high += nr_hq_mags(f"real_datasets/dog/{sample}/{num}/result.csv")
         result_aemb.append(num_high)
     print(result_aemb)
 
@@ -82,7 +86,7 @@ def plot_dog():
     ax.legend()
 
     fig.savefig('plots/Dog.pdf', dpi=300, bbox_inches='tight')
-    plt.close()
+
 
 def plot_tara():
     testing_list = ['TARA_132_SRF_0.22-3', 'TARA_094_SRF_0.22-3', 'TARA_102_SRF_0.22-3', 'TARA_138_SRF_0.22-3', 'TARA_076_SRF_0.45-0.8',
@@ -92,17 +96,17 @@ def plot_tara():
     training_num = [20,30,40,50,60,70,80,90,100,109]
     result_bowtie2  = 0
     for sample in testing_list:
-        result_bowtie2 += get_high(f"real_datasets/ocean/{sample}/bowtie2/result.csv")
+        result_bowtie2 += nr_hq_mags(f"real_datasets/ocean/{sample}/bowtie2/result.csv")
     print(result_bowtie2)
     result_bowtie2_single = 0
     for sample in testing_list:
-        result_bowtie2_single += get_high(f"real_datasets/ocean/{sample}/bowtie2_single/result.csv")
+        result_bowtie2_single += nr_hq_mags(f"real_datasets/ocean/{sample}/bowtie2_single/result.csv")
     print(result_bowtie2_single)
     result_aemb = []
     for num in training_num:
         num_high = 0
         for sample in testing_list:
-            num_high += get_high(f"real_datasets/ocean/{sample}/{num}/result.csv")
+            num_high += nr_hq_mags(f"real_datasets/ocean/{sample}/{num}/result.csv")
         result_aemb.append(num_high)
     print(result_aemb)
 
@@ -121,6 +125,7 @@ def plot_tara():
     ax.legend()
     fig.savefig('plots/Ocean.pdf', dpi=300, bbox_inches='tight')
 
+
 def plot_soil():
     testing_list = ['SAMN06266461', 'SAMN06264631', 'SAMN06267101', 'SAMN06266485', 'SAMN06267081',
                 'SAMN06264385', 'SAMN06266477', 'SAMN06266454', 'SAMN07631258', 'SAMN06266487',
@@ -129,17 +134,17 @@ def plot_soil():
     training_num = [20,30,40,50,60,70,80,90,100,101]
     result_bowtie2  = 0
     for sample in testing_list:
-        result_bowtie2 += get_high(f"real_datasets/soil/{sample}/bowtie2/result.csv")
+        result_bowtie2 += nr_hq_mags(f"real_datasets/soil/{sample}/bowtie2/result.csv")
     print(result_bowtie2)
     result_bowtie2_single = 0
     for sample in testing_list:
-        result_bowtie2_single += get_high(f"real_datasets/soil/{sample}/bowtie2_single/result.csv")
+        result_bowtie2_single += nr_hq_mags(f"real_datasets/soil/{sample}/bowtie2_single/result.csv")
     print(result_bowtie2_single)
     result_aemb = []
     for num in training_num:
         num_high = 0
         for sample in testing_list:
-            num_high += get_high(f"real_datasets/soil/{sample}/{num}/result.csv")
+            num_high += nr_hq_mags(f"real_datasets/soil/{sample}/{num}/result.csv")
         result_aemb.append(num_high)
     print(result_aemb)
 
