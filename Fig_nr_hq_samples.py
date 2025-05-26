@@ -3,6 +3,9 @@ from matplotlib import cm
 import pandas as pd
 import seaborn as sns
 from os import makedirs
+from matplotlib import rcParams
+
+rcParams['svg.fonttype'] = 'none'  # Use text for fonts in SVGs (makes them editable)
 
 
 IN2CM = 2.54
@@ -38,18 +41,19 @@ def load_data(env):
     result.sort_index(inplace=True)
     return result, result_bowtie2, result_bowtie2_single
 
-for env in ['human_gut', 'dog', 'ocean', 'soil']:
+fig, axes = plt.subplots(4,1, figsize=(8/IN2CM, 14/IN2CM),)
+
+for (ax, env) in zip(axes.flat, ['human_gut', 'dog', 'ocean', 'soil']):
     result_aemb, result_bowtie2, result_bowtie2_single= load_data(env)
-    fig, ax = plt.subplots(figsize=(10/IN2CM, 6/IN2CM))
     ax.plot(result_aemb.index, result_aemb, '-o', label='AEMB', color=COLOR_AEMB)
     ax.hlines(y=result_bowtie2, xmin=result_aemb.index[0], xmax=result_aemb.index[-1], label='Bowtie2(multi)', color=COLOR_BOWTIE2_MULTI)
     ax.hlines(y=result_bowtie2_single, xmin=result_aemb.index[0], xmax=result_aemb.index[-1], label='Bowtie2(single)', color=COLOR_BOWTIE2_SINGLE)
-    ax.set_xlabel('Training samples used')
-    ax.set_ylabel('Number of high-quality bins')
-    ax.set_title(env)
-    ax.legend()
-    fig.tight_layout()
-    sns.despine(fig, trim=True)
-    fig.savefig(f'plots/{env}.pdf', dpi=300, bbox_inches='tight')
-
+    ax.set_ylim(result_bowtie2_single * .75, result_aemb.max() * 1.05)
+    ax.set_ylabel('Number of\nhigh-quality bins')
+    #ax.set_title(env)
+    #ax.legend()
+ax.set_xlabel('Training samples used')
+fig.tight_layout()
+sns.despine(fig, trim=True)
+fig.savefig(f'plots/nr_bins_envs.pdf', dpi=300, bbox_inches='tight')
 
