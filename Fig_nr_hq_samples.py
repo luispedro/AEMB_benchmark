@@ -55,5 +55,5 @@ for (ax, env) in zip(axes.flat, ['human_gut', 'dog', 'ocean', 'soil']):
 ax.set_xlabel('Training samples used')
 fig.tight_layout()
 sns.despine(fig, trim=True)
-fig.savefig(f'plots/nr_bins_envs.pdf', dpi=300, bbox_inches='tight')
+fig.savefig(f'plots/nr_bins_envs.svg', dpi=300, bbox_inches='tight')
 

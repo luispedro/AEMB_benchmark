@@ -29,7 +29,7 @@ for index in [24, 25, 26, 27, 28, 29, 30, 'hash', 'default']:
         method_names.append(f'AEMB(default)')
     else:
         basedir = f"running_time/soil/seed_N/{index}"
-        method_names.append(f'N = {index}')
+        method_names.append(f'B = {index}')
     time_out = parse_time_output(f"{basedir}/indexing.txt")
     index_running_time = time_out.running_time
     memory_usage = time_out.memory_usage
@@ -57,4 +57,4 @@ ax_mem.set_xticks(range(len(method_names)))
 ax_mem.set_xticklabels(method_names, rotation=90, ha='center', fontsize=8)
 fig.tight_layout()
 sns.despine(fig, trim=True)
-fig.savefig(f'plots/Fig_run_time_mem.pdf', dpi=300, bbox_inches='tight')
+fig.savefig(f'plots/Fig_run_time_mem.svg', dpi=300, bbox_inches='tight')
