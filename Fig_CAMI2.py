@@ -3,6 +3,9 @@ import seaborn as sns
 from collections import defaultdict
 import os
 import pandas as pd
+from os import makedirs
+
+makedirs('plots', exist_ok=True)
 
 plt.rcParams['svg.fonttype'] = 'none' # Make sure text is not converted to paths in SVG (so they can be edited)
 IN2CM = 2.54
