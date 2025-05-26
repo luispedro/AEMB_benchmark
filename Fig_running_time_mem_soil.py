@@ -53,7 +53,7 @@ ax_mem.set_ylabel('Memory usage\n(peak, GB)')
 # rotate x-axis labels
 ax_rt.set_xticks(range(len(method_names)))
 ax_rt.set_xticklabels(method_names, rotation=90, ha='center', fontsize=8)
-ax_rt.set_xticks(range(len(method_names)))
+ax_mem.set_xticks(range(len(method_names)))
 ax_mem.set_xticklabels(method_names, rotation=90, ha='center', fontsize=8)
 fig.tight_layout()
 sns.despine(fig, trim=True)
