@@ -9,6 +9,7 @@ makedirs('plots', exist_ok=True)
 
 plt.rcParams['svg.fonttype'] = 'none' # Make sure text is not converted to paths in SVG (so they can be edited)
 IN2CM = 2.54
+LINE_WIDTH = 1
 
 env2indices = {
         'Skin': [1, 13, 14, 15, 16, 17, 18, 19, 20, 28],
@@ -58,40 +59,11 @@ def get_result(env, data_index, amber_path,run_time):
     return result
 
 
-def plot_multi_against_multi_hash():
-    for env,data_index in env2indices.items():
-        result = {'strobealign':[0,0,0],
-              'bwa':[0,0,0],
-              'bowtie2':[0,0,0],
-              'seed':[0,0,0],
-              'seed_hash':[0,0,0],
-              'fairy':[0,0,0]}
-
-        for run_time in range(5):
-            result_run = get_result(env, data_index, f"CAMI2_multi_against_multi/{env}", run_time)
-            result['seed'] = [a + b / 5 for a, b in zip(result['seed'], result_run['seed'])]
-            result['seed_hash'] = [a + b / 5 for a, b in zip(result['seed_hash'], result_run['seed_hash'])]
-
-        print(result['seed_hash'])
-        print(result['seed'])
-
-        line_width = 1
-        fig,ax = plt.subplots(figsize=(4, 4))
-
-        ax.plot(['genus', 'species', 'strain'],
-                 result['seed_hash'][::-1], label='AEMB(hash)', color='#7570b3',
-                 linewidth=line_width, marker='o', )
-
-        plt.plot(['genus', 'species', 'strain'],
-                 result['seed'][::-1], label='AEMB', color='#1b9e77',
-                 linewidth=line_width, marker='o', )
-
-        plt.legend()
-        plt.title(f"{env}", fontsize=20, alpha=1.0, color='black')
-        plt.savefig(f'plots/cami2_short_reads_{env}_multi_against_multi_hash.pdf', dpi=300, bbox_inches='tight')
 
 fig,axes = plt.subplots(1, len(env2indices), figsize=(17/IN2CM, 6/IN2CM), sharex=True)
-for ax, (env, data_index) in zip(axes.flat, env2indices.items()):
+fig_hash,axes_hash = plt.subplots(1, len(env2indices), figsize=(17/IN2CM, 6/IN2CM), sharex=True)
+
+for ax, ax_hash, (env, data_index) in zip(axes.flat, axes_hash.flat, env2indices.items()):
     result = pd.DataFrame()
     for run_time in range(5):
         rt = get_result(env, data_index, f"CAMI2_multi_against_multi/{env}", run_time)
@@ -100,7 +72,6 @@ for ax, (env, data_index) in zip(axes.flat, env2indices.items()):
     result /= 5
 
 
-    line_width = 1
 
     order = ['genus', 'species', 'strain']
     tool2color = {
@@ -108,20 +79,32 @@ for ax, (env, data_index) in zip(axes.flat, env2indices.items()):
             'bwa': '#e6ab02',
             'bowtie2': '#7570b3',
             'seed': '#1b9e77',
+            'seed_hash': '#d95f02',
             'fairy': '#66a61e'
             }
     for tool in ['strobealign', 'bwa', 'bowtie2', 'seed', 'fairy']:
         ax.plot(order,
                 result.loc[tool, order],
                 label=tool, color=tool2color[tool],
-                linewidth=line_width, marker='o', )
+                linewidth=LINE_WIDTH, marker='o', )
 
 
-    ax.set_title(f"{env}", alpha=1.0, fontsize=9)
-    ax.set_xticks([0, 1, 2])
-    ax.set_xticklabels(order, rotation=90)
-sns.despine(fig, trim=True)
-fig.tight_layout()
+    for tool in ['seed_hash', 'seed']:
+        ax_hash.plot(order,
+                     result.loc[tool, order],
+                     label=tool, color=tool2color[tool],
+                     linewidth=LINE_WIDTH, marker='o', )
+
+    for x in (ax, ax_hash):
+        x.set_title(f"{env}", alpha=1.0, fontsize=9)
+        x.set_xticks([0, 1, 2])
+        x.set_xticklabels(order, rotation=90)
+
+for f in (fig, fig_hash):
+    sns.despine(f, trim=True)
+    f.tight_layout()
 ax.legend()
 fig.savefig(f'plots/cami2_short_reads.svg', dpi=300, bbox_inches='tight')
 
+ax_hash.legend()
+fig_hash.savefig(f'plots/cami2_short_reads_multi_against_multi_hash.svg', dpi=300, bbox_inches='tight')
