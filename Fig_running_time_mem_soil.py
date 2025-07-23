@@ -4,6 +4,7 @@ from matplotlib import rcParams
 import seaborn as sns
 from parse_output import parse_time_output
 from os import makedirs
+import pandas as pd
 
 rcParams['svg.fonttype'] = 'none'  # Use text for fonts in SVG
 
@@ -39,6 +40,7 @@ for index in [24, 25, 26, 27, 28, 29, 30, 'hash']:
     running_times.append((total_running_time - index_running_time * 10) / 60)
     memory.append(memory_usage / 1024)  # Convert memory from MB to GB
 
+
 fig, (ax_rt, ax_mem) = plt.subplots(1,2, figsize=(9/IN2CM, 7/IN2CM))
 
 ax_rt.bar(method_names, running_times, color=cm.Dark2.colors[1], width=0.8, align='center')
@@ -57,3 +59,13 @@ fig.tight_layout()
 ax_rt.set_ylabel('Running time (mins)', fontsize=9)
 ax_mem.set_ylabel('Memory usage (peak, GB)', fontsize=9)
 fig.savefig(f'plots/Fig_run_time_mem.svg', dpi=300, bbox_inches='tight')
+
+
+data = pd.DataFrame({'Method': method_names,
+                     'Running': running_times,
+                     'Memory': memory}).set_index('Method')
+
+print(f'''
+Running time and memory usage ratios:
+{1 - data.drop('AEMB(hash)') / data.loc['AEMB(hash)']}
+''')
